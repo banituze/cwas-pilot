@@ -55,7 +55,7 @@ Everything is optional. Copy `.env.example` to `.env` for local use, or set vari
 | `PAYMENT_WEBHOOK_SECRET` | HMAC-SHA256 secret for `/webhooks/payments/<orange|airtel>`. Without it no deposit is confirmed by webhook. |
 | `SMTP_*` | Optional email for password resets. SMS is used when the account has a phone. |
 
-Coordinator and administrator enrollment codes live in **Admin > Settings** (preview defaults `AMPOTAKA-COORD` and `AMPOTAKA-ADMIN`; production seeds random ones).
+The coordinator enrollment code lives in **Admin > Settings**. Administrators are created on the web, in **Admin > Users**.
 
 ## Search engines and security
 
