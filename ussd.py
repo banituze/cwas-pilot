@@ -223,7 +223,7 @@ def v_phone(tok):
 
 
 def _err(ctx, e):
-    msgs = {"insufficient_funds": "Not enough balance. Need {need}, you have {balance}.", "slot_full": "That slot just filled. Try another.",
+    msgs = {"insufficient_funds": "Not enough ance. Need {need}, you have {balance}.", "slot_full": "That slot just filled. Try another.",
             "slot_blocked": "Slot blocked by maintenance.", "one_per_day": "You already have a booking that day.",
             "source_unavailable": "Water point not available.", "date_range": "Choose a day in the next 7 days.",
             "slot_unavailable": "Slot not available.", "litres_invalid": "Litres not allowed here.", "not_cancellable": "This booking cannot be cancelled.",
@@ -1148,9 +1148,9 @@ def handle_sms(phone, text):
             else:
                 reply = f"Dial {DIAL} to register, or text REGISTER MEMBER Name|Village|FamilySize|LANG|PIN|RecoveryCode to {SHORTCODE}."
         elif cmd == "HELP":
-            reply = (L("BAL, SOURCES, BOOKINGS, BOOKING <ref>, CANCEL <ref>, DEPOSIT <amount>, BOOK <n> <day> <HH:MM> <litres>, RECEIPT <ref>, NOTICES, PROFILE, PIN HELP, LANG MG/FR/EN. Menu: dial {dial}.", dial=DIAL)
+            reply = (L("BALANCE, SOURCES, BOOKINGS, BOOKING <ref>, CANCEL <ref>, DEPOSIT <amount>, BOOK <n> <day> <HH:MM> <litres>, RECEIPT <ref>, NOTICES, PROFILE, PIN HELP, LANG MG/FR/EN. Menu: dial {dial}.", dial=DIAL)
                      if not staff else L("PENDING, APPROVE <ref>, DENY <ref>, COLLECT <ref>, REG MEMBER Name|Phone|Village|Size|LANG|PIN, SOURCES, LANG MG/FR/EN."))
-        elif cmd in ("BAL", "BALANCE", "WALLET") and h:
+        elif cmd in ("BALANCE", "WALLET") and h:
             reply = L("Your balance is {balance}", balance=M(h.balance))
         elif cmd == "SOURCES":
             reply = "; ".join(f"{i}. {short(s.name, 20)} [{_STATE.get(s.status, '?')}] {S.fmt_min(s.open_min)}-{S.fmt_min(s.close_min)}"
@@ -1286,13 +1286,13 @@ def demo_script(lang):
         hhmm = S.fmt_min(t["start_min"])
         ref2 = "CW-7K3M9Q21"
         amt2 = S.price_quote(home, sms_src, litres)[0]
-        script["max"] = [["type", "BAL"], ["in", L("Your balance is {balance}", balance=M(balance))],
+        script["max"] = [["type", "BALANCE"], ["in", L("Your balance is {balance}", balance=M(balance))],
                          ["type", f"BOOK {n} TOMORROW {hhmm} {litres}"],
                          ["in", L("Booked {ref}: {source} {date} {time}, {litres} L, {amount}. Status: pending approval.", ref=ref2, source=sms_src.name,
                                   date=f"{days[1]:%Y-%m-%d}", time=hhmm, litres=litres, amount=M(amt2))],
                          ["wait", 1600],
                          ["in", tt("Booking {ref} is approved: {source}, {date} {time}.", lang, ref=ref2, source=sms_src.name, date=f"{days[1]:%Y-%m-%d}", time=hhmm)]]
     else:
-        script["max"] = [["type", "BAL"], ["in", L("Your balance is {balance}", balance=M(balance))]]
+        script["max"] = [["type", "BALANCE"], ["in", L("Your balance is {balance}", balance=M(balance))]]
     script["nova"] = nova
     return script
