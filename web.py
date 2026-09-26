@@ -487,8 +487,10 @@ def register_routes(app):
         return h
 
     @app.get("/app")
-    @member_required
+    @login_required
     def dashboard():
+        if current_user.role != "member":
+            return redirect(home_for(current_user))
         h = my_household()
         upcoming = Booking.query.filter(Booking.household_id == h.id, Booking.date >= S.today_local(), Booking.status.in_(("pending", "approved"))).order_by(Booking.date, Booking.start_min).limit(3).all()
         recent = WalletTxn.query.filter_by(household_id=h.id).order_by(WalletTxn.id.desc()).limit(5).all()
