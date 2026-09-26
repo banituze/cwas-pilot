@@ -927,7 +927,7 @@ body{background-image:radial-gradient(70vw 60vh at 8% 0%,var(--amb1),transparent
   .callbtn.hit,.ussd-card button.hit,.compose button.hit{transform:scale(.9)}
   .k.hit{transform:translateY(2px)}
   /* the log-in (ghost) button answers the pointer in every theme and over photos */
-  .btn-ghost:hover{background:rgb(var(--ink)/.14);border-color:rgb(var(--ink)/.4);transform:translateY(-1px)}
+  .btn-ghost:hover{background:rgb(var(--ink)/.14);border-color:rgb(var(--ink)/.4)}
   /* footer: the big CWAS in the middle, one hairline above the bar */
   .foot-big{text-align:center}
   /* sign up and log in: the live-water pond on the left stays in view while the form scrolls */
