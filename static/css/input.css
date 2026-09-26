@@ -880,7 +880,7 @@ body{background-image:radial-gradient(70vw 60vh at 8% 0%,var(--amb1),transparent
     .bottomnav summary::-webkit-details-marker{display:none}
     .more{position:static;flex:1;display:flex}
     .more[open] summary{background:rgb(var(--ink)/.12)}
-    .more-sheet{position:fixed;left:12px;right:12px;bottom:84px;z-index:61;display:grid;grid-template-columns:repeat(2,1fr);gap:6px;padding:10px;border-radius:28px;max-height:70vh;overflow:auto}
+.more-sheet{position:fixed;left:12px;right:12px;bottom:84px;z-index:61;display:grid;grid-template-columns:repeat(2,1fr);align-items:start;gap:6px;padding:10px;border-radius:28px;max-height:70vh;overflow:auto}
     .more-sheet a{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:18px;font-size:14px;font-weight:600;text-decoration:none;color:rgb(var(--ink))}
     .more-sheet a[aria-current=page]{background:rgb(var(--fill));color:rgb(var(--onfill))}
     .more:not([open]) .more-sheet{display:none}
